@@ -1,0 +1,32 @@
+﻿<style>
+    body {
+        background-color: black;
+        color: white;
+    }
+
+    
+</style>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Instagram Clone</h1>
+    <p>Login here:</p>
+    <form asp-action="Login" method="post" class="d-inline-block">
+        <!-- Center the entire form with d-inline-block class -->
+        <div class="form-group text-center">
+            <label for="Email">Email:</label>
+            <!-- Center the email input field with mx-auto class -->
+            <input type="email" class="form-control mx-auto" id="email" name="email" style="width: 200px;" required>
+        </div>
+        <div class="form-group text-center">
+            <label for="Password">Password:</label>
+            <!-- Center the password input field with mx-auto class -->
+            <input type="password" class="form-control mx-auto" id="password" name="password" style="width: 200px;" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Log In</button>
+    </form>
+    <p>If you are not registered, you can create an account <a href="/Home/Register">here</a>.</p>
+</div>

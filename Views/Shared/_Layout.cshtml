@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+@{
+    bool isUserAuthorized = User.Identity.IsAuthenticated; // Check if the user is authenticated
+}
+
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] Instagram clone</title>
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+<body id="page-top">
+    <div class="wrapper">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg fixed-top" id="sideNav">
+            
+            <img class="logo" src="~/assets/logo.png" alt="Logo" class="navbar-logo">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav">
+
+                    <li class="nav-item">
+                        @if (isUserAuthorized)
+                        {
+                            <a class="nav-link js-scroll-trigger" href="@Url.Action("ForYou", "Home")">
+                                <img src="~/assets/home.png" alt="Home Icon" class="nav-icon"> Home
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="nav-link js-scroll-trigger" href="@Url.Action("Index", "Home")">
+                                <img src="~/assets/home.png" alt="Home Icon" class="nav-icon"> Home
+                            </a>
+                        }
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="@Url.Action("", "Search")">
+                            <img src="~/assets/search.png" alt="Search Icon" class="nav-icon"> Search
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="@Url.Action("", "Explore")">
+                            <img src="~/assets/explore.jpg" alt="Explore Icon" class="nav-icon"> Explore
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="@Url.Action("", "Messages")">
+                            <img src="~/assets/messages.png" alt="Messages Icon" class="nav-icon"> Messages
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="@Url.Action("", "Notifications")">
+                            <img src="~/assets/notification.png" alt="Notifications Icon" class="nav-icon"> Notifications
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+
+    </div>
+
+</body>
+
+</html>

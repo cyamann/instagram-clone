@@ -1,0 +1,95 @@
+﻿@model List<Instagram_clone.Models.Post> // Replace with your Post model namespace
+
+@{
+    ViewData["Title"] = "User Posts";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Replace with your layout path
+}
+
+<style>
+    body {
+        background-color: black;
+        color: white;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .card {
+        background-color: black;
+        color: white;
+        margin-bottom: 20px;
+    }
+
+    .like-button {
+        background-color: black;
+        color: white;
+    }
+
+        .like-button i {
+            color: white;
+        }
+
+    /* Style to set the image size to 800x800 pixels */
+    .card-img {
+        width: 600px;
+        height:600px;
+        object-fit: cover; /* This ensures the image covers the entire space without distortion */
+    }
+</style>
+
+<h3 class="ml-3">Posts by @ViewBag.Username</h3>
+
+<div class="container">
+    <form method="post">
+        <div class="form-group">
+            <div class="input-group">
+                <input type="text" id="username" name="username" class="form-control" placeholder="Enter a Username" />
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="row">
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="d-flex align-items-center">
+                            <!-- Profile picture -->
+                            <div>
+                                <img src="~/assets/@item.imageurl" class="rounded-circle" alt="Profile Picture" width="40" height="40">
+                            </div>
+                            <!-- User information -->
+                            <div class="ml-3">
+                                <h5 class="card-title">@item.UserName</h5>
+                            </div>
+                        </div>
+
+                        <!-- Set the image size to 800x800 pixels -->
+                        <img src="~/assets/@item.imageurl" class="card-img card-img-top" alt="Image">
+                        <div class="card-body">
+                            <!-- Action buttons for Like, Comment, and Message -->
+                            <div class="d-flex justify-content-between">
+                                <button class="btn btn-light like-button"><i class="far fa-heart"></i> Like</button>
+                                <button class="btn btn-light"><i class="far fa-comment"></i> Comment</button>
+                                <button class="btn btn-light"><i class="far fa-envelope"></i> Message</button>
+                            </div>
+                            <p class="card-text">@item.description</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>No posts found for @ViewBag.Username.</p>
+        }
+    </div>
+</div>

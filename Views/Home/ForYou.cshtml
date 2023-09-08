@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Instagram_clone.Models.Post>
+
+<link rel="stylesheet" href="~/css/styles.css" /> <!-- Use "~" to reference the root of the application for the stylesheet path -->
+<style>
+    body {
+        background-color: black; /* Set the background color to black */
+        color: white; /* Set the text color to white for better visibility */
+    }
+    /* Style the post containers */
+    .card {
+        background-color: black; /* Set the background color of post containers to black */
+        border: 1px solid white; /* Add a white border for visibility */
+        margin-bottom: 10px; /* Add some spacing between post containers */
+    }
+
+    /* Style the card title and text */
+    .card-title,
+    .card-text {
+        color: white; /* Set the text color inside post containers to white */
+    }
+</style>
+@{
+    ViewData["Title"] = "For You Page";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <p>Welcome, @User.Identity.Name!</p>
+             <!-- Add a Log Out button -->
+            <form id="logout-form" asp-action="Logout" method="post">
+                <button type="submit" class="btn btn-danger">Log Out</button>
+            </form>
+            @if (ViewBag.Follows == null)
+            {
+                <p>No follows.</p>
+            }
+
+            @foreach (var post in Model)
+            {
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <!-- Check if the user profile pic path is not empty or null -->
+                        @if (!string.IsNullOrWhiteSpace(post.user_profile_pic))
+                        {
+                            <div>
+                                <img src="~/assets/@post.user_profile_pic" class="rounded-circle" alt="Profile Picture" width="40" height="40">
+                                <h5 class="card-title">@post.UserName</h5>
+                            </div>
+                        }
+
+                        <!-- Check if the post image path is not empty or null -->
+                        @if (!string.IsNullOrWhiteSpace(post.imageurl))
+                        {
+                            <!-- Use the "src" attribute to set the image source -->
+                            <img src="~/assets/@post.imageurl" class="card-img-top" alt="Image" style="width: 100%; height: 400px;">
+                        }
+                        <p class="card-text">@post.content</p> <!-- Make sure "Content" is spelled correctly -->
+
+                    </div>
+                </div>
+            }
+
+            @if (!Model.Any())
+            {
+                <p class="text-center">No posts to display.</p>
+            }
+        </div>
+    </div>
+</div>
