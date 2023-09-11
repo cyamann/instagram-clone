@@ -63,6 +63,35 @@
                             <img src="~/assets/notification.png" alt="Notifications Icon" class="nav-icon"> Notifications
                         </a>
                     </li>
+                    <li class="nav-item">
+                        @if (isUserAuthorized)
+                        {
+                            <a class="nav-link js-scroll-trigger" href="@Url.Action("Index", "Profile")">
+                                <img src="~/assets/profile.jpg" alt="Profile Icon" class="nav-icon"> Profile
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="nav-link js-scroll-trigger" href="@Url.Action("Index", "Home")">
+                                <img src="~/assets/profile.jpg" alt="Profile Icon" class="nav-icon"> Profile
+                            </a>
+                        }
+                    </li>
+                    <li class="nav-item">
+                        @if (isUserAuthorized)
+                        {
+                            <a class="nav-link js-scroll-trigger" href="@Url.Action("Index", "Create")">
+                                <img src="~/assets/create.png" alt="Create Icon" class="nav-icon"> Create
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="nav-link js-scroll-trigger" href="@Url.Action("Index", "Home")">
+                                <img src="~/assets/create.png" alt="Create Icon" class="nav-icon"> Create
+                            </a>
+                        }
+                    </li>
+                    
                 </ul>
             </div>
         </nav>

@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Create a New Post";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Set the layout page for your view
+}
+
+<div class="container">
+    <h2>Create a New Post</h2>
+    <form asp-action="Index" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <label for="Title">Title</label>
+            <input type="text" class="form-control" id="Title" name="Title" required>
+        </div>
+
+        <div class="form-group">
+            <label for="Description">Description</label>
+            <textarea class="form-control" id="Description" name="Description" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="Content">Content</label>
+            <textarea class="form-control" id="Content" name="Content" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="Image">Upload an Image</label>
+            <input type="file" class="form-control-file" id="Image" name="Image" accept="image/*" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Post</button>
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert alert-success" id="successMessage">
+                @TempData["Message"]
+            </div>
+            <script>
+                setTimeout(function () {
+                    var successMessage = document.getElementById('successMessage');
+                    if (successMessage) {
+                        successMessage.style.display = 'none';
+                    }
+                }, 5000); // Hide the message after 5 seconds (5000 milliseconds)
+            </script>
+        }
+
+
+    </form>
+</div>
