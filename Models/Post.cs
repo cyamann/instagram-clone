@@ -24,5 +24,6 @@ namespace Instagram_clone.Models
         public string UserName { get; set; }
 
         public string user_profile_pic { get; set; }
+
     }
 }

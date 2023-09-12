@@ -31,11 +31,6 @@
             <form id="logout-form" asp-action="Logout" method="post">
                 <button type="submit" class="btn btn-danger">Log Out</button>
             </form>
-            @if (ViewBag.Follows == null)
-            {
-                <p>No follows.</p>
-            }
-
             @foreach (var post in Model)
             {
                 <div class="card mb-3">

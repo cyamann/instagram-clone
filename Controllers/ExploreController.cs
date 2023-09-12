@@ -1,5 +1,6 @@
 ﻿using Instagram_clone.Context;
 using Instagram_clone.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
@@ -21,6 +22,7 @@ namespace Instagram_clone.Controllers
             // Define the range of user IDs
             int minUserId = 0;
             int maxUserId = 45;
+
 
             var posts = _context.post
                 .Where(post => post.UserId >= minUserId && post.UserId <= maxUserId)

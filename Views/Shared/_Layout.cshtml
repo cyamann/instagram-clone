@@ -54,16 +54,6 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="@Url.Action("", "Messages")">
-                            <img src="~/assets/messages.png" alt="Messages Icon" class="nav-icon"> Messages
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="@Url.Action("", "Notifications")">
-                            <img src="~/assets/notification.png" alt="Notifications Icon" class="nav-icon"> Notifications
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         @if (isUserAuthorized)
                         {
                             <a class="nav-link js-scroll-trigger" href="@Url.Action("Index", "Profile")">
